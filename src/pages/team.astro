@@ -1,0 +1,30 @@
+---
+// src/pages/team.astro
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const teamMembers = await getCollection('team');
+---
+
+<Layout title="Our Team">
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold text-center mb-12">Meet Our Team</h1>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {teamMembers.map(person => (
+        <div class="border rounded-lg p-6 text-center bg-white shadow-sm" key={person.id}>
+          {person.data.photo && (
+            <img
+              src={person.data.photo}
+              alt={person.data.name}
+              class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-gray-200"
+            />
+          )}
+          <h2 class="text-xl font-semibold">{person.data.name}</h2>
+          <p class="text-blue-600 mb-2">{person.data.role}</p>
+          {person.data.bio && <p class="text-gray-600 mt-2 text-sm">{person.data.bio}</p>}
+          {person.data.email && <p class="text-xs text-gray-500 mt-1">{person.data.email}</p>}
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>

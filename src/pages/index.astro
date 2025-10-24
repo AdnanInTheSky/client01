@@ -1,0 +1,65 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services', ({ data }) => data.featured);
+
+// Hardcoded testimonials (as per your knowledge base example)
+const testimonials = [
+  {
+    quote: "My site was live within an hour. No confusing plugins or setup like WordPress. Just fast, simple, done. ✅",
+    author: "Lisa M."
+  },
+  {
+    quote: "Way easier than hiring a developer. I just filled out a form and the site looked great instantly.",
+    author: "Darren P."
+  },
+  {
+    quote: "Quotes from freelancers were over $1,000. UrSite did it for $500 and looks better than freelanced alternatives.",
+    author: "Kylie J."
+  }
+];
+---
+
+<Layout title="Home">
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Services -->
+    <section class="mb-20 text-center">
+      <h1 class="text-4xl font-bold mb-2">Our Services</h1>
+      <div class="grid md:grid-cols-2 gap-8 mt-10">
+        {services.map(service => (
+          <div class="border rounded-lg p-6 shadow-sm hover:shadow-md transition" key={service.slug}>
+            {service.data.icon_image && (
+              <img
+                src={service.data.icon_image}
+                alt={service.data.title}
+                class="w-16 h-16 mx-auto mb-4 object-contain"
+              />
+            )}
+            <h2 class="text-xl font-semibold mb-2">{service.data.title}</h2>
+            <p class="text-gray-600 mb-4">{service.data.description}</p>
+            <p class="text-lg font-bold text-blue-600">{service.data.price}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="text-center mb-20">
+      <h2 class="text-3xl font-bold mb-10">What Our Customers Say</h2>
+      <div class="space-y-8">
+        {testimonials.map((t, i) => (
+          <blockquote key={i} class="border-l-4 border-blue-500 pl-6 text-left italic bg-gray-50 p-4 rounded">
+            <p>"{t.quote}"</p>
+            <footer class="mt-2 font-medium">— {t.author}</footer>
+          </blockquote>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-16 text-center text-gray-400 text-sm">
+      LogoHere
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,46 @@
+---
+// src/pages/articles/[slug].astro
+import Layout from '../../layouts/Layout.astro';
+import { getEntryBySlug } from 'astro:content';
+
+const { params } = Astro;
+const article = await getEntryBySlug('articles', params.slug);
+
+if (!article) {
+  throw new Error(`Article not found for slug: ${params.slug}`);
+}
+---
+
+<Layout title={article.data.title}>
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <article>
+      {article.data.cover_image && (
+        <img
+          src={article.data.cover_image}
+          alt={article.data.title}
+          class="w-full h-64 object-cover mb-6 rounded"
+        />
+      )}
+      <header>
+        <h1 class="text-3xl font-bold mb-2">{article.data.title}</h1>
+        <p class="text-gray-600 mb-4">{article.data.excerpt}</p>
+        <p class="text-sm text-gray-500">
+          Published on {article.data.date.toLocaleDateString()} by {article.data.author || 'Admin'}
+        </p>
+        {article.data.tags && (
+          <div class="mt-2">
+            {article.data.tags.map(tag => (
+              <span key={tag} class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+      <div class="prose mt-8 prose-blue max-w-none">
+        <!-- The main content body -->
+        {article.body}
+      </div>
+    </article>
+  </main>
+</Layout>
