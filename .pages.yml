@@ -1,0 +1,89 @@
+# pages.config.yml
+media:
+  input: public/images
+  output: /images
+  extensions: [jpg, jpeg, png, webp, gif]
+
+content:
+  # Articles (Blog Posts)
+  - name: articles
+    label: Articles
+    type: collection
+    path: src/content/articles
+    format: yaml-frontmatter
+    filename: "{slug}.md"
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: slug
+        type: string
+        hint: "Used in URL. Lowercase, hyphenated (e.g., my-new-post)"
+      - name: date
+        type: date
+        required: true
+      - name: excerpt
+        type: text
+        hint: "Short summary for listing pages"
+      - name: author
+        type: string
+      - name: cover_image
+        type: image
+        required: false
+        hint: "Featured image for the article"
+      - name: tags
+        type: list
+        field:
+          type: string
+      - name: body
+        type: rich-text
+        required: true
+
+  # Services (for homepage pricing)
+  - name: services
+    label: Services
+    type: collection
+    path: src/content/services
+    format: yaml-frontmatter
+    filename: "{slug}.md"
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: price
+        type: string
+        required: true
+        hint: "e.g., $500.00"
+      - name: description
+        type: text
+        required: true
+      - name: featured
+        type: boolean
+        default: true
+      - name: icon_image
+        type: image
+        required: false
+        hint: "Icon or image representing the service"
+
+  # Team members
+  - name: team
+    label: Team
+    type: collection
+    path: src/content/team
+    format: yaml
+    filename: "{slug}.yaml"
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: role
+        type: string
+        required: true
+      - name: bio
+        type: text
+      - name: photo
+        type: image
+        required: false
+      - name: email
+        type: string
+        required: false
