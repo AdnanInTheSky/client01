@@ -21,14 +21,10 @@ export async function getStaticPaths() {
     props: { article }, // Pass the article data as a prop
   }));
 }
-
-// Use the article data passed via props (if using getStaticPaths with props)
-// const { article } = Astro.props; // Uncomment this line if using props
-// For this setup, we already fetched 'article' above, so we can use that directly.
 ---
 
 <Layout title={article.data.title}>
-  <main class="max-w-4xl mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto">
     <article>
       {article.data.cover_image && (
         <img
@@ -53,10 +49,10 @@ export async function getStaticPaths() {
           </div>
         )}
       </header>
-      <div class="prose mt-8 prose-blue max-w-none">
+      <div class="prose mt-8 prose-blue max-w-none bg-white p-4 rounded-lg border border-gray-200">
         <!-- The main content body -->
         {article.body}
       </div>
     </article>
-  </main>
+  </div>
 </Layout>

@@ -22,44 +22,45 @@ const testimonials = [
 ];
 ---
 
-<Layout title="Home">
-  <main class="max-w-4xl mx-auto px-4 py-12">
-    <!-- Services -->
-    <section class="mb-20 text-center">
-      <h1 class="text-4xl font-bold mb-2">Our Services</h1>
-      <div class="grid md:grid-cols-2 gap-8 mt-10">
-        {services.map(service => (
-          <div class="border rounded-lg p-6 shadow-sm hover:shadow-md transition" key={service.slug}>
-            {service.data.icon_image && (
-              <img
-                src={service.data.icon_image}
-                alt={service.data.title}
-                class="w-16 h-16 mx-auto mb-4 object-contain"
-              />
-            )}
-            <h2 class="text-xl font-semibold mb-2">{service.data.title}</h2>
-            <p class="text-gray-600 mb-4">{service.data.description}</p>
-            <p class="text-lg font-bold text-blue-600">{service.data.price}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+<Layout title="UrSite - Home">
+  <section class="text-center mb-16">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Simple, Fast, Affordable Websites</h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      Launch your professional website in minutes, not months. No coding required.
+    </p>
+  </section>
 
-    <!-- Testimonials -->
-    <section class="text-center mb-20">
-      <h2 class="text-3xl font-bold mb-10">What Our Customers Say</h2>
-      <div class="space-y-8">
-        {testimonials.map((t, i) => (
-          <blockquote key={i} class="border-l-4 border-blue-500 pl-6 text-left italic bg-gray-50 p-4 rounded">
-            <p>"{t.quote}"</p>
-            <footer class="mt-2 font-medium">— {t.author}</footer>
-          </blockquote>
-        ))}
-      </div>
-    </section>
-
-    <div class="mt-16 text-center text-gray-400 text-sm">
-      LogoHere
+  <!-- Services -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {services.map(service => (
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:border-blue-200 hover:shadow-lg transition" key={service.slug}>
+          {service.data.icon_image && (
+            <img
+              src={service.data.icon_image}
+              alt={service.data.title}
+              class="w-16 h-16 mx-auto mb-4 object-contain"
+            />
+          )}
+          <h3 class="text-xl font-semibold mb-2 text-center">{service.data.title}</h3>
+          <p class="text-gray-600 mb-4 text-center">{service.data.description}</p>
+          <p class="text-lg font-bold text-blue-600 text-center">{service.data.price}</p>
+        </div>
+      ))}
     </div>
-  </main>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-blue-50 py-12 rounded-xl">
+    <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">What Our Customers Say</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+      {testimonials.map((t, i) => (
+        <div key={i} class="bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-gray-700 italic mb-4">"{t.quote}"</p>
+          <footer class="font-medium text-gray-900">— {t.author}</footer>
+        </div>
+      ))}
+    </div>
+  </section>
 </Layout>
