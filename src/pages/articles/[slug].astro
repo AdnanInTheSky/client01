@@ -1,14 +1,30 @@
 ---
 // src/pages/articles/[slug].astro
 import Layout from '../../layouts/Layout.astro';
-import { getEntryBySlug } from 'astro:content';
+import { getEntryBySlug, getCollection } from 'astro:content';
 
 const { params } = Astro;
+
+// Fetch the specific article based on the slug
 const article = await getEntryBySlug('articles', params.slug);
 
 if (!article) {
+  // If the article doesn't exist, throw a 404 error
   throw new Error(`Article not found for slug: ${params.slug}`);
 }
+
+// Fetch all articles to generate paths in getStaticPaths
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map(article => ({
+    params: { slug: article.slug }, // e.g., { slug: 'my-first-post' }
+    props: { article }, // Pass the article data as a prop
+  }));
+}
+
+// Use the article data passed via props (if using getStaticPaths with props)
+// const { article } = Astro.props; // Uncomment this line if using props
+// For this setup, we already fetched 'article' above, so we can use that directly.
 ---
 
 <Layout title={article.data.title}>
