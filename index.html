@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeamFlow – Team Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+    .home-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .home-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+    .home-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+    .home-card p {
+      color: #64748b;
+      margin-bottom: 1.25rem;
+    }
+    .home-card .btn {
+      display: inline-block;
+      background: #3b82f6;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .home-card .btn:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <header style="text-align: center; margin-bottom: 2rem;">
+    <h1>🌟 TeamFlow</h1>
+    <p>Manage and track team tasks across projects</p>
+  </header>
+
+  <main>
+    <div class="home-grid">
+      <a href="farmen.html" class="home-card">
+        <h2>🌱 Farmen</h2>
+        <p>Agricultural innovation & field operations</p>
+        <div class="btn">View Team</div>
+      </a>
+
+      <a href="krishishikkha.html" class="home-card">
+        <h2>📚 Krishishikkha</h2>
+        <p>Training, education & knowledge sharing</p>
+        <div class="btn">View Team</div>
+      </a>
+
+      <a href="urbor.html" class="home-card">
+        <h2>🏙️ Urbor</h2>
+        <p>Urban development & infrastructure</p>
+        <div class="btn">View Team</div>
+      </a>
+    </div>
+  </main>
+
+  <footer style="text-align: center; margin-top: 3rem; color: #94a3b8;">
+    <p>Team management powered by Pages CMS + Vercel</p>
+  </footer>
+</body>
+</html>
