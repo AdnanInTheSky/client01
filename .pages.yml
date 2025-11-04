@@ -1,0 +1,85 @@
+media:
+  input: content/images
+  output: /content/images
+  extensions: [jpg, jpeg, png, webp, gif]
+
+content:
+  - name: farmen
+    label: Farmen Team
+    type: collection
+    path: content/teams/farmen
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        type: string
+        label: Name
+        required: true
+      - name: role
+        type: string
+        required: true
+      - name: status
+        type: select
+        options: ["To Do", "In Progress", "Review", "Done"]
+        default: "To Do"
+      - name: deadline
+        type: date
+        required: false
+      - name: image
+        type: image
+        required: false
+      - name: body
+        type: rich-text
+        label: Task Description
+        required: true
+
+  - name: krishishikkha
+    label: Krishishikkha Team
+    type: collection
+    path: content/teams/krishishikkha
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        type: string
+        label: Name
+        required: true
+      - name: role
+        type: string
+        required: true
+      - name: status
+        type: select
+        options: ["To Do", "In Progress", "Review", "Done"]
+      - name: deadline
+        type: date
+        required: false
+      - name: image
+        type: image
+        required: false
+      - name: body
+        type: rich-text
+        required: true
+
+  - name: urbor
+    label: Urbor Team
+    type: collection
+    path: content/teams/urbor
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        type: string
+        label: Name
+        required: true
+      - name: role
+        type: string
+        required: true
+      - name: status
+        type: select
+        options: ["To Do", "In Progress", "Review", "Done"]
+      - name: deadline
+        type: date
+        required: false
+      - name: image
+        type: image
+        required: false
+      - name: body
+        type: rich-text
+        required: true
