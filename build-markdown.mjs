@@ -4,10 +4,10 @@ import matter from 'gray-matter';
 
 const TEAMS = ['farmen', 'krishishikkha', 'urbor'];
 const CONTENT_DIR = './content/teams';
-const OUTPUT_FILE = './js/build/data.js';
+const OUTPUT_FILE = './public/js/build/data.js';
 
 // Ensure output dir exists
-fs.mkdirSync('./js/build', { recursive: true });
+fs.mkdirSync('./public/js/build', { recursive: true });
 
 const allData = {};
 
@@ -38,4 +38,4 @@ for (const team of TEAMS) {
 
 const jsContent = `window.TEAM_DATA = ${JSON.stringify(allData, null, 2)};`;
 fs.writeFileSync(OUTPUT_FILE, jsContent);
-console.log('✅ Markdown compiled to js/build/data.js');
+console.log('✅ Markdown compiled to public/js/build/data.js');

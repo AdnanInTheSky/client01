@@ -31,7 +31,6 @@
         ? `<div class="deadline">Deadline: ${formatDate(member.deadline)}</div>`
         : '';
 
-      // Escape HTML in body for safety (optional: use DOMPurify in production)
       const bodyText = member.body.replace(/</g, '<').replace(/>/g, '>');
 
       return `
@@ -49,7 +48,6 @@
     container.innerHTML = cards;
   }
 
-  // Wait for DOM and data
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       const team = getCurrentTeam();
